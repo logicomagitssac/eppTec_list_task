@@ -2,6 +2,7 @@ package epptec;
 
 public class Main {
     public static void main(String[] args) {
+
         System.out.println("\nHello world!"); // obligatory... =D
 
         // task:
@@ -16,14 +17,6 @@ public class Main {
 
         Worker worker = new Worker();
         worker.startLoop();
-
-
-
-
-
-
-
-
-
+        
     }
 }

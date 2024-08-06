@@ -19,11 +19,11 @@ public class Worker {
         }
     }
 
-    private void filterNumbers(LinkedList<Integer> theNumbers, FilterRules filterCase) {
+    private void filterNumbers(LinkedList<Integer> theNumbers, FilterRules filterCase) { // this is the actual algorithm for which this whole console app was written
         for (int i = 0; i < theNumbers.size(); i++) {
             if (filterCase.evaluate(theNumbers.get(i))) { // comparison from ENUM items
-                theNumbers.remove(i);
-                i--; // because linkedList shifts index upon item deletion
+                theNumbers.remove(i--); // added postfix decrement straight into the argument, just to flex... =D
+                // i--; because linkedList shifts 'left' index upon item deletion, and we must follow
             }
         }
     }
@@ -52,13 +52,12 @@ public class Worker {
         }
     }
 
-    public void  startLoop() {
-
+    public void startLoop() {
         LinkedList<Integer> randomNumbers = new LinkedList<Integer>();
         populate(randomNumbers);
         writer.writeIntro();
         writer.writeOutNumbers(randomNumbers);
-        while (true) { // yes. infinite loop. perfectly valid. exit condition is clearly implemented (switch case 0)...
+        while (true) { // yes. infinite loop. perfectly valid. exit condition is clearly implemented in switch case 0
             if (rebukeBadInput) {
                 writer.writeBadInputRebuke();
                 rebukeBadInput = false;
@@ -70,13 +69,13 @@ public class Worker {
                     writer.writeOutNumbers(randomNumbers);
                     break;
                 case 2:
-                    // re-generate list (throw away and make new one)
+                    // re-generate list - delete items and re-populate
                     randomNumbers.clear();
                     populate(randomNumbers);
                     writer.writeOutNumbers(randomNumbers);
                     break;
                 case 3:
-                    // filter - the actual algorithm
+                    // filter - the actual tasked algorithm
                     handleFilterOptions(randomNumbers);
                     break;
                 case 0:
@@ -87,4 +86,5 @@ public class Worker {
             }
         }
     }
+
 }

@@ -11,6 +11,7 @@ public class Writer {
             // nothing to see here
         }
     }
+
     public void writeIntro() {
         sleepFunction(1000);
         System.out.println("\nHello and welcome to this very simple algorithm demonstration, which took way more effort than it really should have... =D\n");
@@ -60,4 +61,5 @@ public class Writer {
         System.out.println("\n   Bye!");
         sleepFunction(500);
     }
+
 }
